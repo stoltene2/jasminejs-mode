@@ -8,15 +8,14 @@ All keybindings in buster-mode start with `C-c C-t` and then a two-letter mnemon
 
 ## Development
 
-To fetch the test dependencies:
+Intstall the dependencies with cask
 
-    $ cd /path/to/jasminejs-mode
-    $ git submodule init
-    $ git submodule update
+    cask install
+
 
 Run the tests with:
 
-    $ ./util/ecukes/ecukes features
+    $ cask exec ecukes
 
 ## Special Thanks
 

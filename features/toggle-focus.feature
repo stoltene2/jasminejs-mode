@@ -117,3 +117,63 @@ Feature: Toggle focus
     Then I should see "describe"
     And I should not see "xdescribe"
     And the cursor should be before "expect"
+
+  Scenario: Change an xit to iit
+    When I insert:
+    """
+    describe('my jasminejs tests', function () {
+      xit('should focus this test', function () {
+        expect(true).toBe(true);
+      });
+    });
+    """
+    And I go to the front of the word "expect"
+    And I press "C-c j it"
+    Then I should see "iit"
+    And I should not see "xit"
+    And the cursor should be before "expect"
+
+  Scenario: Change an iit to xit
+    When I insert:
+    """
+    describe('my jasminejs tests', function () {
+      iit('should focus this test', function () {
+        expect(true).toBe(true);
+      });
+    });
+    """
+    And I go to the front of the word "expect"
+    And I press "C-c j pi"
+    Then I should see "xit"
+    And I should not see "iit"
+    And the cursor should be before "expect"
+
+  Scenario: Change an xdescribe to ddescribe
+    When I insert:
+    """
+    xdescribe('my jasminejs tests', function () {
+      it('should focus this test', function () {
+        expect(true).toBe(true);
+      });
+    });
+    """
+    And I go to the front of the word "expect"
+    And I press "C-c j dt"
+    Then I should see "ddescribe"
+    And I should not see "xdescribe"
+    And the cursor should be before "expect"
+
+  Scenario: Change a ddescribe to xdescribe
+    When I insert:
+    """
+    ddescribe('my jasminejs tests', function () {
+      it('should focus this test', function () {
+        expect(true).toBe(true);
+      });
+    });
+    """
+    And I go to the front of the word "expect"
+    And I press "C-c j pd"
+    Then I should see "xdescribe"
+    And I should not see "ddescribr"
+    And the cursor should be before "expect"

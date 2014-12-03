@@ -35,10 +35,10 @@ When you toggle a test it will toggle it between `describe` and `ddescribe`."
   "Jasminejs keymap")
 
 (define-key jasminejs-mode-map
-  (kbd "C-c j tt") 'jasminejs-toggle-focus-it)
+  (kbd "C-c j it") 'jasminejs-toggle-focus-it)
 
 (define-key jasminejs-mode-map
-  (kbd "C-c j td") 'jasminejs-toggle-focus-describe)
+  (kbd "C-c j dt") 'jasminejs-toggle-focus-describe)
 
 (define-minor-mode jasminejs-mode
   "To better edit your files"

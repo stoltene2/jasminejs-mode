@@ -1,5 +1,5 @@
 
-Feature: Toggle deferred
+Feature: Toggle focus
 
   Scenario: Focus a test
     When I insert:
@@ -11,7 +11,7 @@ Feature: Toggle deferred
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j tt"
+    And I press "C-c j it"
     Then I should see "iit("
     And the cursor should be before "expect"
 
@@ -25,7 +25,7 @@ Feature: Toggle deferred
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j tt"
+    And I press "C-c j it"
     Then I should see "it("
     And I should not see "iit("
     And the cursor should be before "expect"
@@ -41,7 +41,7 @@ Feature: Toggle deferred
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j td"
+    And I press "C-c j dt"
     Then I should see "ddescribe("
     And the cursor should be before "expect"
 
@@ -55,7 +55,7 @@ Feature: Toggle deferred
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j td"
+    And I press "C-c j dt"
     Then I should see "describe("
     And I should not see "ddescribe"
     And the cursor should be before "expect"

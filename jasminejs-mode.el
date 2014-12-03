@@ -1,65 +1,39 @@
 
-
 (defun jasminejs-toggle-focus-it ()
   "Toggle the `it` function to focus.
 When you toggle a test it will toggle it between `it` and `iit`."
   (interactive)
-
-  (let* ((it-regex "it\w*("))
-    (save-excursion
-      (re-search-backward it-regex)
-      (beginning-of-line-text)
-      (when (looking-at "it")
-          (insert "i"))
-      (when (looking-at "iit")
-        (delete-char 1))
-      )))
+  (jasminejs--toggle-previous-word "it" "i"))
 
 (defun jasminejs-toggle-focus-describe ()
   "Toggle the `describe` function to focus.
 When you toggle a test it will toggle it between `describe` and `ddescribe`."
   (interactive)
-
-  (let* ((it-regex "describe\w*("))
-    (save-excursion
-      (re-search-backward it-regex)
-      (beginning-of-line-text)
-      (when (looking-at "describe")
-          (insert "d"))
-      (when (looking-at "ddescribe")
-        (delete-char 1))
-      )))
+  (jasminejs--toggle-previous-word "describe" "d"))
 
 (defun jasminejs-toggle-pending-it ()
   "Toggle the `it` function to pending.
 When you toggle a test it will toggle it between `it` and `xit`."
   (interactive)
-
-  (let* ((it-regex "it\w*("))
-    (save-excursion
-      (re-search-backward it-regex)
-      (beginning-of-line-text)
-      (when (looking-at "it")
-          (insert "x"))
-      (when (looking-at "xit")
-        (delete-char 1))
-      )))
+  (jasminejs--toggle-previous-word "it" "x"))
 
 (defun jasminejs-toggle-pending-describe ()
   "Toggle the `describe` function to pending.
 When you toggle a test it will toggle it between `describe` and `xdescribe`."
   (interactive)
+  (jasminejs--toggle-previous-word "describe" "x"))
 
-  (let* ((describe-regex "describe\w*("))
+(defun jasminejs--toggle-previous-word (word toggle-char)
+  "Toggle WORD on or off by prefixing it with TOGGLE-CHAR"
+  (let* ((word-regex (concat word "\w*("))
+         (toggle-word (concat toggle-char word)))
     (save-excursion
-      (re-search-backward describe-regex)
+      (re-search-backward word-regex)
       (beginning-of-line-text)
-      (when (looking-at "describe")
-          (insert "x"))
-      (when (looking-at "xdescribe")
-        (delete-char 1))
-      )))
-
+      (when (looking-at word)
+        (insert toggle-char))
+      (when (looking-at toggle-word)
+        (delete-char (length toggle-char))))))
 
 (defvar jasminejs-mode-map (make-sparse-keymap)
   "Jasminejs keymap")

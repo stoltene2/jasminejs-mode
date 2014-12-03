@@ -8,6 +8,8 @@ All keybindings in buster-mode start with `C-c j` and then a two-letter mnemonic
 
 * `it` -- *I*t *T*oggle between `it` and `iit`
 * `dt` -- *D*escribe *T*oggle between `describe` and `ddescribe`
+* `pi` -- *P*ending *I*t between `it` and `xit`
+* `pd` -- *P*ending *D*escribe between `describe` and `describe`
 
 ## Development
 

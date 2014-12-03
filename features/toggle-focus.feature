@@ -59,3 +59,61 @@ Feature: Toggle focus
     Then I should see "describe("
     And I should not see "ddescribe"
     And the cursor should be before "expect"
+
+  Scenario: Set a test as pending
+    When I insert:
+    """
+    describe('my jasminejs tests', function () {
+      it('should focus this test', function () {
+        expect(true).toBe(true);
+      });
+    });
+    """
+    And I go to the front of the word "expect"
+    And I press "C-c j pi"
+    Then I should see "xit"
+    And the cursor should be before "expect"
+
+  Scenario: Unset a test as pending
+    When I insert:
+    """
+    describe('my jasminejs tests', function () {
+      xit('should focus this test', function () {
+        expect(true).toBe(true);
+      });
+    });
+    """
+    And I go to the front of the word "expect"
+    And I press "C-c j pi"
+    Then I should see "it"
+    And I should not see "xit"
+    And the cursor should be before "expect"
+
+  Scenario: Set a collectiono as pending
+    When I insert:
+    """
+    describe('my jasminejs tests', function () {
+      it('should focus this test', function () {
+        expect(true).toBe(true);
+      });
+    });
+    """
+    And I go to the front of the word "expect"
+    And I press "C-c j pd"
+    Then I should see "xdescribe"
+    And the cursor should be before "expect"
+
+  Scenario: Unset a collection as pending
+    When I insert:
+    """
+    xdescribe('my jasminejs tests', function () {
+      it('should focus this test', function () {
+        expect(true).toBe(true);
+      });
+    });
+    """
+    And I go to the front of the word "expect"
+    And I press "C-c j pd"
+    Then I should see "describe"
+    And I should not see "xdescribe"
+    And the cursor should be before "expect"

@@ -1,15 +1,15 @@
 # jasminejs-mode
 
-jasminejs-mode helps you manipulate and edit [Jasmine](http://) test files.
+jasminejs-mode helps you manipulate and edit [Jasmine](http://jasmine.github.io/) test files.
 
 ## Keybinding
 
 All keybindings in buster-mode start with `C-c j` and then a two-letter mnemonic shortcut.
 
 * `it` -- *I*t *T*oggle between `it` and `iit`
+* `ip` -- *I*t *P*ending between `it` and `xit`
 * `dt` -- *D*escribe *T*oggle between `describe` and `ddescribe`
-* `pi` -- *P*ending *I*t between `it` and `xit`
-* `pd` -- *P*ending *D*escribe between `describe` and `describe`
+* `dp` -- *D*escribe *P*ending between `describe` and `describe`
 
 ## Development
 

@@ -70,7 +70,7 @@ Feature: Toggle focus
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j pi"
+    And I press "C-c j ip"
     Then I should see "xit"
     And the cursor should be before "expect"
 
@@ -84,7 +84,7 @@ Feature: Toggle focus
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j pi"
+    And I press "C-c j ip"
     Then I should see "it"
     And I should not see "xit"
     And the cursor should be before "expect"
@@ -99,7 +99,7 @@ Feature: Toggle focus
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j pd"
+    And I press "C-c j dp"
     Then I should see "xdescribe"
     And the cursor should be before "expect"
 
@@ -113,7 +113,7 @@ Feature: Toggle focus
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j pd"
+    And I press "C-c j dp"
     Then I should see "describe"
     And I should not see "xdescribe"
     And the cursor should be before "expect"
@@ -143,7 +143,7 @@ Feature: Toggle focus
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j pi"
+    And I press "C-c j ip"
     Then I should see "xit"
     And I should not see "iit"
     And the cursor should be before "expect"
@@ -173,7 +173,37 @@ Feature: Toggle focus
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j pd"
+    And I press "C-c j dp"
     Then I should see "xdescribe"
-    And I should not see "ddescribr"
+    And I should not see "ddescrib"
+    And the cursor should be before "expect"
+
+  Scenario: When I try to toggle a describe and there is none
+    When I insert:
+    """
+      it('should focus this test', function () {
+        expect(true).toBe(true);
+      });
+    });
+    """
+    And I go to the front of the word "expect"
+    And I press "C-c j dp"
+    Then I should not see "xdescribe"
+    And I should not see "ddescribe"
+    And I should not see "describe"
+    And the cursor should be before "expect"
+
+  Scenario: When I try to toggle an it and there is none
+    When I insert:
+    """
+    describe('my tests', function() {
+        expect(true).toBe(true);
+      });
+    });
+    """
+    And I go to the front of the word "expect"
+    And I press "C-c j it"
+    Then I should not see "it"
+    And I should not see "iit"
+    And I should not see "xit"
     And the cursor should be before "expect"

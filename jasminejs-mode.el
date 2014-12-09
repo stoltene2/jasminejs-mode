@@ -1,3 +1,24 @@
+;;; jasminejs-mode.el --- A minor mode for manipulating jasmine test files
+
+;; Copyright (C) 2014 Eric Stolten
+
+;; Author: Eric Stolten <stoltene2@gmail.com>
+;; Keywords: javascript jasmine
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Code:
 
 (defun jasminejs-toggle-focus-it ()
   "Toggle the `it` function to focus.
@@ -31,15 +52,17 @@ This is useful for toggling between an xdescribe and a ddescribe, for example."
   (let* ((word-regex (concat word "\w*("))
          (toggle-word (concat toggle-char word)))
     (save-excursion
-      (re-search-backward word-regex)
-      (beginning-of-line-text)
-      (if remove-char
-          (when (looking-at (concat remove-char word))
-            (delete-char (length remove-char))))
-      (when (looking-at word)
-        (insert toggle-char))
-      (when (looking-at toggle-word)
-        (delete-char (length toggle-char))))))
+      (if (re-search-backward word-regex (point-min) 'no-error)
+          (progn
+            (beginning-of-line-text)
+            (if remove-char
+                (when (looking-at (concat remove-char word))
+                  (delete-char (length remove-char))))
+            (when (looking-at word)
+              (insert toggle-char))
+            (when (looking-at toggle-word)
+              (delete-char (length toggle-char))))
+        (message "I could not find '%s'" word)))))
 
 (defvar jasminejs-mode-map (make-sparse-keymap)
   "Jasminejs keymap")
@@ -48,13 +71,13 @@ This is useful for toggling between an xdescribe and a ddescribe, for example."
   (kbd "C-c j it") 'jasminejs-toggle-focus-it)
 
 (define-key jasminejs-mode-map
+  (kbd "C-c j ip") 'jasminejs-toggle-pending-it)
+
+(define-key jasminejs-mode-map
   (kbd "C-c j dt") 'jasminejs-toggle-focus-describe)
 
 (define-key jasminejs-mode-map
-  (kbd "C-c j pi") 'jasminejs-toggle-pending-it)
-
-(define-key jasminejs-mode-map
-  (kbd "C-c j pd") 'jasminejs-toggle-pending-describe)
+  (kbd "C-c j dp") 'jasminejs-toggle-pending-describe)
 
 (define-minor-mode jasminejs-mode
   "To better edit your files"

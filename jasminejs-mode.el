@@ -52,17 +52,19 @@ This is useful for toggling between an xdescribe and a ddescribe, for example."
   (let* ((word-regex (concat word "\w*("))
          (toggle-word (concat toggle-char word)))
     (save-excursion
-      (if (re-search-backward word-regex (point-min) 'no-error)
-          (progn
-            (beginning-of-line-text)
-            (if remove-char
-                (when (looking-at (concat remove-char word))
-                  (delete-char (length remove-char))))
-            (when (looking-at word)
-              (insert toggle-char))
-            (when (looking-at toggle-word)
-              (delete-char (length toggle-char))))
-        (message "I could not find '%s'" word)))))
+      (cl-labels ((helper ()
+			  (when (re-search-backward word-regex (point-min) t)
+			    (beginning-of-line-text)
+			    (if remove-char
+				(if (looking-at (concat remove-char word))
+				    (delete-char (length remove-char))
+				  (helper))
+			      (helper))
+			    (if (looking-at word)        (insert toggle-char) 
+			      (helper))
+			    (if (looking-at toggle-word) (delete-char (length toggle-char))
+			      (helper)))))
+	(helper)))))
 
 (defvar jasminejs-mode-map (make-sparse-keymap)
   "Jasminejs keymap")

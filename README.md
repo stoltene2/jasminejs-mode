@@ -4,7 +4,7 @@ jasminejs-mode helps you manipulate and edit [Jasmine](http://jasmine.github.io/
 
 ## Keybinding
 
-All keybindings in buster-mode start with `C-c j` and then a two-letter mnemonic shortcut.
+All keybindings in buster-mode start with `C-c j` and then a two-letter mnemonic shortcut. You can override `jasminejs-prefix-key` to change the prefix key.
 
 * `it` -- *I*t *T*oggle between `it` and `iit`
 * `ip` -- *I*t *P*ending between `it` and `xit`

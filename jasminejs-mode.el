@@ -67,17 +67,26 @@ This is useful for toggling between an xdescribe and a ddescribe, for example."
 (defvar jasminejs-mode-map (make-sparse-keymap)
   "Jasminejs keymap")
 
-(define-key jasminejs-mode-map
-  (kbd "C-c j it") 'jasminejs-toggle-focus-it)
+(defgroup jasminejs-mode nil
+  "jasminejs-mode customizations")
+
+(defcustom jasminejs-prefix-key "C-c j"
+  "This is the standard key sequence prefix key for leading into jasminejs shortcuts.
+WARNING: Changing this prefix will not take effect dynamically. You
+will need to reload to take effect."
+  :type 'string)
 
 (define-key jasminejs-mode-map
-  (kbd "C-c j ip") 'jasminejs-toggle-pending-it)
+  (kbd (concat jasminejs-prefix-key "it")) 'jasminejs-toggle-focus-it)
 
 (define-key jasminejs-mode-map
-  (kbd "C-c j dt") 'jasminejs-toggle-focus-describe)
+  (kbd (concat jasminejs-prefix-key "ip")) 'jasminejs-toggle-pending-it)
 
 (define-key jasminejs-mode-map
-  (kbd "C-c j dp") 'jasminejs-toggle-pending-describe)
+  (kbd (concat jasminejs-prefix-key "dt")) 'jasminejs-toggle-focus-describe)
+
+(define-key jasminejs-mode-map
+  (kbd (concat jasminejs-prefix-key "dp")) 'jasminejs-toggle-pending-describe)
 
 (define-minor-mode jasminejs-mode
   "To better edit your files"

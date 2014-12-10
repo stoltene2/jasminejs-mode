@@ -46,10 +46,12 @@ When you toggle a test it will toggle it between `describe` and `xdescribe`."
 
 (defun jasminejs--toggle-previous-word (word toggle-char &optional remove-char)
   "Toggle WORD on or off by prefixing it with TOGGLE-CHAR
+
 If you pass the optional REMOVE-CHAR is passed we check to see if REMOVE-CHAR precedes WORD. If it does, we remove it.
 
-This is useful for toggling between an xdescribe and a ddescribe, for example."
-  (let* ((word-regex (concat word "\w*("))
+This is useful for toggling between an xdescribe and a ddescribe, for
+example."
+  (let* ((word-regex (concat  "\\<[" toggle-char remove-char "]?" word "\w*("))
          (toggle-word (concat toggle-char word)))
     (save-excursion
       (if (re-search-backward word-regex (point-min) 'no-error)

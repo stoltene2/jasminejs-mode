@@ -207,3 +207,18 @@ Feature: Toggle focus
     And I should not see "iit"
     And I should not see "xit"
     And the cursor should be before "expect"
+
+Scenario: Focus a test with intermediate function call
+    When I insert:
+    """
+    describe('my jasminejs tests', function () {
+      it('should focus this test', function () {
+        barit('a troublesome function call');
+        expect(true).toBe(true);
+      });
+    });
+    """
+    And I go to the front of the word "expect"
+    And I press "C-c j it"
+    Then I should see "iit("
+    And the cursor should be before "expect"

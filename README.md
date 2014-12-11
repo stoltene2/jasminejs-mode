@@ -17,18 +17,21 @@ Writing tests is nice when its easy. Get the characters out of the way.
 
 Below are some snippets that are loaded. Control the use of snippets by setting/unsetting `jasminejs-load-snippets-p`.
 
-* afte -- afterEach(...)
-* befe -- beforeEach(...)
-* describe -- describe(...)
-* ex -- expect(...)
-* expb -- expect(...).toBe(...)
-* expc -- expect(...).toHaveBeenCalled()
-* expcw -- expect(...).toHaveBeenCalledWith(...)
-* expe -- expect(...).toEqual(...)
-* expf -- expect(...).toBeFalsy()
-* expt -- expect(...).toBeTruthy()
-* it -- it(...)
-* itd -- it(..., function(done))
+
+| key      | description                           |
+|----------+---------------------------------------|
+| `afte`     | `afterEach(...)`                        |
+| `befe`     | `beforeEach(...)`                       |
+| `desc`     | `describe(...)`                         |
+| `ex`       | `expect(...)`                           |
+| `expb`     | `expect(...).toBe(...)`                 |
+| `expc`     | `expect(...).toHaveBeenCalled()`        |
+| `expcw`    | `expect(...).toHaveBeenCalledWith(...)` |
+| `expe`     | `expect(...).toEqual(...)`              |
+| `expf`     | `expect(...).toBeFalsy()`               |
+| `expt`     | `expect(...).toBeTruthy()`              |
+| `it`       | `it(...)`                               |
+
 
 ## Development
 

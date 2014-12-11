@@ -72,6 +72,10 @@ example."
 (defgroup jasminejs-mode nil
   "jasminejs-mode customizations")
 
+(defcustom jasminejs-load-snippets t
+  "This determines if snippets should be loaded when the mode is loaded"
+  :type 'boolean)
+
 (defcustom jasminejs-prefix-key "C-c j"
   "This is the standard key sequence prefix key for leading into jasminejs shortcuts.
 WARNING: Changing this prefix will not take effect dynamically. You
@@ -90,8 +94,17 @@ will need to reload to take effect."
 (define-key jasminejs-mode-map
   (kbd (concat jasminejs-prefix-key "dp")) 'jasminejs-toggle-pending-describe)
 
+(defun jasminejs--maybe-load-snippets ()
+  "Load snippets if jasminejs-load-snippets is defined."
+  (if (or (bound-and-true-p yas-global-mode)
+          (bound-and-true-p yas-minor-mode))
+      (let* ((snippet-dir "~/.emacs.d/site-lisp/jasminejs-mode/snippets"))
+        (yas-load-directory snippet-dir)
+        (yas-activate-extra-mode 'jasminejs-mode))))
+
 (define-minor-mode jasminejs-mode
   "To better edit your files"
-  nil " Jas" jasminejs-mode-map)
+  nil " Jas" jasminejs-mode-map
+  :after-hook (jasminejs--maybe-load-snippets))
 
 (provide 'jasminejs-mode)

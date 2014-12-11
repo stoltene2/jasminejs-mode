@@ -11,6 +11,25 @@ All keybindings in buster-mode start with `C-c j` and then a two-letter mnemonic
 * `dt` -- *D*escribe *T*oggle between `describe` and `ddescribe`
 * `dp` -- *D*escribe *P*ending between `describe` and `describe`
 
+## Snippets
+
+Writing tests is nice when its easy. Get the characters out of the way.
+
+Below are some snippets that are loaded. Control the use of snippets by setting/unsetting `jasminejs-load-snippets-p`.
+
+* afte -- afterEach(...)
+* befe -- beforeEach(...)
+* describe -- describe(...)
+* ex -- expect(...)
+* expb -- expect(...).toBe(...)
+* expc -- expect(...).toHaveBeenCalled()
+* expcw -- expect(...).toHaveBeenCalledWith(...)
+* expe -- expect(...).toEqual(...)
+* expf -- expect(...).toBeFalsy()
+* expt -- expect(...).toBeTruthy()
+* it -- it(...)
+* itd -- it(..., function(done))
+
 ## Development
 
 Intstall the dependencies with cask

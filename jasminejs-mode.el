@@ -72,7 +72,7 @@ example."
 (defgroup jasminejs-mode nil
   "jasminejs-mode customizations")
 
-(defcustom jasminejs-load-snippets t
+(defcustom jasminejs-load-snippets-p t
   "This determines if snippets should be loaded when the mode is loaded"
   :type 'boolean)
 
@@ -96,8 +96,8 @@ will need to reload to take effect."
 
 (defun jasminejs--maybe-load-snippets ()
   "Load snippets if jasminejs-load-snippets is defined."
-  (if (or (bound-and-true-p yas-global-mode)
-          (bound-and-true-p yas-minor-mode))
+  (if (and jasminejs-load-snippets-p (or (bound-and-true-p yas-global-mode)
+                                       (bound-and-true-p yas-minor-mode)))
       (let* ((snippet-dir "~/.emacs.d/site-lisp/jasminejs-mode/snippets"))
         (yas-load-directory snippet-dir)
         (yas-activate-extra-mode 'jasminejs-mode))))

@@ -19,7 +19,7 @@ Below are some snippets that are loaded. Control the use of snippets by setting/
 
 
 | key      | description                           |
-|----------+---------------------------------------|
+| -------- | ------------------------------------- |
 | `afte`     | `afterEach(...)`                        |
 | `befe`     | `beforeEach(...)`                       |
 | `desc`     | `describe(...)`                         |

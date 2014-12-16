@@ -72,9 +72,12 @@ example."
 (defgroup jasminejs-mode nil
   "jasminejs-mode customizations")
 
-(defcustom jasminejs-load-snippets-p t
-  "This determines if snippets should be loaded when the mode is loaded"
-  :type 'boolean)
+(defconst jasminejs-snippet-path
+  (concat (file-name-directory (if (bound-and-true-p load-file-name)
+                                   load-file-name
+                                 (buffer-file-name))) "snippets")
+
+  "This is the location of the bundled jasminejs snippets.")
 
 (defcustom jasminejs-prefix-key "C-c j"
   "This is the standard key sequence prefix key for leading into jasminejs shortcuts.
@@ -94,17 +97,20 @@ will need to reload to take effect."
 (define-key jasminejs-mode-map
   (kbd (concat jasminejs-prefix-key "dp")) 'jasminejs-toggle-pending-describe)
 
-(defun jasminejs--maybe-load-snippets ()
-  "Load snippets if jasminejs-load-snippets is defined."
-  (if (and jasminejs-load-snippets-p (or (bound-and-true-p yas-global-mode)
-                                       (bound-and-true-p yas-minor-mode)))
-      (let* ((snippet-dir "~/.emacs.d/site-lisp/jasminejs-mode/snippets"))
-        (yas-load-directory snippet-dir)
-        (yas-activate-extra-mode 'jasminejs-mode))))
+
+(defun jasminejs-add-snippets-to-yas-snippet-dirs (&optional snippet-path)
+  "This activates jasminejs-mode as an extra mode for yasnippet.
+It also puts the snippet directory at the front of the
+yas-snippet-dirs list. If the &optional SNIPPET-PATH is not
+passed, the fefault value of jasminejs-snippet-path is used."
+  (if yas-snippet-dirs
+      (let* ((snippet-dir (or snippet-path jasminejs-snippet-path)))
+        (yas-activate-extra-mode 'jasminejs-mode)
+        (add-to-list 'yas-snippet-dirs snippet-dir)
+        (yas-load-directory snippet-dir))))
 
 (define-minor-mode jasminejs-mode
   "To better edit your files"
-  nil " Jas" jasminejs-mode-map
-  :after-hook (jasminejs--maybe-load-snippets))
+  nil " Jas" jasminejs-mode-map)
 
 (provide 'jasminejs-mode)

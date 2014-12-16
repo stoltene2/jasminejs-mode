@@ -15,7 +15,19 @@ All keybindings in jasminejs-mode start with `C-c j` and then a two-letter mnemo
 
 Writing tests is nice when its easy. Get the characters out of the way.
 
-Below are some snippets that are loaded. Control the use of snippets by setting/unsetting `jasminejs-load-snippets-p`.
+Below are some snippets that can be loaded.
+
+To load snippets you should load them after yasnippet is loaded and in the after hook.
+
+For example,
+
+```elisp
+(add-hook 'jasminejs-mode-hook (lambda () (jasminejs-add-snippets-to-yas-snippet-dirs)))
+```
+
+The function `jasminejs-add-snippets-to-yas-snippet-dirs` will declare
+jasminejs-mode as a mode that can load snippets and loads the default
+set of snippets for you.
 
 
 | key      | description                           |

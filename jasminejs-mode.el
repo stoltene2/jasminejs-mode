@@ -1,10 +1,11 @@
 ;;; jasminejs-mode.el --- A minor mode for manipulating jasmine test files
 
 ;; Copyright (C) 2014 Eric Stolten
-
+;; Filename: jasminejs-mode.el
+;; Description: Work with jasminejs files
 ;; Author: Eric Stolten <stoltene2@gmail.com>
-;; Keywords: javascript jasmine
 ;; Created: 20 Nov 2014
+;; Keywords: javascript jasmine
 ;; Homepage: https://github.com/stoltene2/jasminejs-mode
 ;; Version: 1.0
 
@@ -54,9 +55,10 @@ When you toggle a test it will toggle it between `describe` and `xdescribe`."
   (jasminejs--toggle-previous-word "describe" "x" "d"))
 
 (defun jasminejs--toggle-previous-word (word toggle-char &optional remove-char)
-  "Toggle WORD on or off by prefixing it with TOGGLE-CHAR
+  "Toggle WORD on or off by prefixing it with TOGGLE-CHAR.
 
-If you pass the optional REMOVE-CHAR is passed we check to see if REMOVE-CHAR precedes WORD. If it does, we remove it.
+If you pass the optional REMOVE-CHAR is passed we check to see if
+REMOVE-CHAR precedes WORD.  If it does we remove it.
 
 This is useful for toggling between an xdescribe and a ddescribe, for
 example."
@@ -76,10 +78,11 @@ example."
         (message "I could not find '%s'" word)))))
 
 (defvar jasminejs-mode-map (make-sparse-keymap)
-  "Jasminejs keymap")
+  "Jasminejs keymap.")
 
 (defgroup jasminejs-mode nil
-  "jasminejs-mode customizations")
+  "jasminejs-mode customizations"
+  :group 'development)
 
 (defconst jasminejs-snippet-path
   (concat (file-name-directory (if (bound-and-true-p load-file-name)
@@ -89,9 +92,10 @@ example."
   "This is the location of the bundled jasminejs snippets.")
 
 (defcustom jasminejs-prefix-key "C-c j"
-  "This is the standard key sequence prefix key for leading into jasminejs shortcuts.
-WARNING: Changing this prefix will not take effect dynamically. You
-will need to reload to take effect."
+  "This is the standard key prefix key for leading into jasminejs shortcuts.
+
+WARNING: Changing this prefix will not take effect
+dynamically.  You will need to reload to take effect."
   :type 'string)
 
 (define-key jasminejs-mode-map
@@ -110,7 +114,7 @@ will need to reload to take effect."
 (defun jasminejs-add-snippets-to-yas-snippet-dirs (&optional snippet-path)
   "This activates jasminejs-mode as an extra mode for yasnippet.
 It also puts the snippet directory at the front of the
-yas-snippet-dirs list. If the &optional SNIPPET-PATH is not
+yas-snippet-dirs list.  If the &optional SNIPPET-PATH is not
 passed, the fefault value of jasminejs-snippet-path is used."
   (if yas-snippet-dirs
       (let* ((snippet-dir (or snippet-path jasminejs-snippet-path)))
@@ -123,5 +127,4 @@ passed, the fefault value of jasminejs-snippet-path is used."
   nil " Jas" jasminejs-mode-map)
 
 (provide 'jasminejs-mode)
-
-;;; filename ends here
+;;; jasminejs-mode.el ends here

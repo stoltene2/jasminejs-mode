@@ -4,6 +4,11 @@
 
 ;; Author: Eric Stolten <stoltene2@gmail.com>
 ;; Keywords: javascript jasmine
+;; Created: 20 Nov 2014
+;; Homepage: https://github.com/stoltene2/jasminejs-mode
+;; Version: 1.0
+
+;; This file is not part of GNU Emacs.
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -17,6 +22,10 @@
 
 ;; You should have received a copy of the GNU General Public License
 ;; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+;;; Commentary:
+;; The main purpose of this mode is to interact with jasmine testing
+;; files for javascript.
 
 ;;; Code:
 
@@ -114,3 +123,5 @@ passed, the fefault value of jasminejs-snippet-path is used."
   nil " Jas" jasminejs-mode-map)
 
 (provide 'jasminejs-mode)
+
+;;; filename ends here

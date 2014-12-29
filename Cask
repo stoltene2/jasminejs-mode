@@ -1,6 +1,6 @@
 (source melpa)
 
-(package "jasminejs-mode" "0.1.0" "Manipulate jasmine js files")
+(package-file "jasminejs-mode.el")
 
 (development
  (depends-on "ecukes")

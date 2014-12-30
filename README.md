@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/stoltene2/jasminejs-mode.svg)](https://travis-ci.org/stoltene2/jasminejs-mode)
+
 # jasminejs-mode
 
 jasminejs-mode helps you manipulate and edit [Jasmine](http://jasmine.github.io/) test files.

@@ -122,6 +122,9 @@ passed, the fefault value of jasminejs-snippet-path is used."
         (add-to-list 'yas-snippet-dirs snippet-dir)
         (yas-load-directory snippet-dir))))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Autoload the minor mode
+;;;###autoload
 (define-minor-mode jasminejs-mode
   "To better edit your files"
   nil " Jas" jasminejs-mode-map)

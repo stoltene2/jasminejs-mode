@@ -77,9 +77,6 @@ example."
               (delete-char (length toggle-char))))
         (message "I could not find '%s'" word)))))
 
-(defvar jasminejs-mode-map (make-sparse-keymap)
-  "Jasminejs keymap.")
-
 (defgroup jasminejs-mode nil
   "jasminejs-mode customizations"
   :group 'development)
@@ -91,24 +88,27 @@ example."
 
   "This is the location of the bundled jasminejs snippets.")
 
-(defcustom jasminejs-prefix-key "C-c j"
+(defcustom jasminejs-prefix-key (kbd "C-c C-j")
   "This is the standard key prefix key for leading into jasminejs shortcuts.
 
 WARNING: Changing this prefix will not take effect
 dynamically.  You will need to reload to take effect."
-  :type 'string)
+  :type 'key-sequence)
 
-(define-key jasminejs-mode-map
-  (kbd (concat jasminejs-prefix-key "it")) 'jasminejs-toggle-focus-it)
+(defvar jasminejs-mode-map
+  (let ((mode-map (make-sparse-keymap))
+        (prefix-map (make-sparse-keymap)))
 
-(define-key jasminejs-mode-map
-  (kbd (concat jasminejs-prefix-key "ip")) 'jasminejs-toggle-pending-it)
+    (define-key prefix-map (kbd "it") 'jasminejs-toggle-focus-it)
+    (define-key prefix-map (kbd "ip") 'jasminejs-toggle-pending-it)
 
-(define-key jasminejs-mode-map
-  (kbd (concat jasminejs-prefix-key "dt")) 'jasminejs-toggle-focus-describe)
+    (define-key prefix-map (kbd "dt") 'jasminejs-toggle-focus-describe)
+    (define-key prefix-map (kbd "dp") 'jasminejs-toggle-pending-describe)
 
-(define-key jasminejs-mode-map
-  (kbd (concat jasminejs-prefix-key "dp")) 'jasminejs-toggle-pending-describe)
+    (define-key mode-map jasminejs-prefix-key prefix-map)
+    mode-map)
+
+  "Keymap for jasminejs mode.")
 
 
 (defun jasminejs-add-snippets-to-yas-snippet-dirs (&optional snippet-path)

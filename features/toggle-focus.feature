@@ -11,7 +11,7 @@ Feature: Toggle focus
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j it"
+    And I press "C-c C-j it"
     Then I should see "iit("
     And the cursor should be before "expect"
 
@@ -25,7 +25,7 @@ Feature: Toggle focus
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j it"
+    And I press "C-c C-j it"
     Then I should see "it("
     And I should not see "iit("
     And the cursor should be before "expect"
@@ -41,7 +41,7 @@ Feature: Toggle focus
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j dt"
+    And I press "C-c C-j dt"
     Then I should see "ddescribe("
     And the cursor should be before "expect"
 
@@ -55,7 +55,7 @@ Feature: Toggle focus
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j dt"
+    And I press "C-c C-j dt"
     Then I should see "describe("
     And I should not see "ddescribe"
     And the cursor should be before "expect"
@@ -70,7 +70,7 @@ Feature: Toggle focus
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j ip"
+    And I press "C-c C-j ip"
     Then I should see "xit"
     And the cursor should be before "expect"
 
@@ -84,7 +84,7 @@ Feature: Toggle focus
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j ip"
+    And I press "C-c C-j ip"
     Then I should see "it"
     And I should not see "xit"
     And the cursor should be before "expect"
@@ -99,7 +99,7 @@ Feature: Toggle focus
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j dp"
+    And I press "C-c C-j dp"
     Then I should see "xdescribe"
     And the cursor should be before "expect"
 
@@ -113,7 +113,7 @@ Feature: Toggle focus
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j dp"
+    And I press "C-c C-j dp"
     Then I should see "describe"
     And I should not see "xdescribe"
     And the cursor should be before "expect"
@@ -128,7 +128,7 @@ Feature: Toggle focus
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j it"
+    And I press "C-c C-j it"
     Then I should see "iit"
     And I should not see "xit"
     And the cursor should be before "expect"
@@ -143,7 +143,7 @@ Feature: Toggle focus
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j ip"
+    And I press "C-c C-j ip"
     Then I should see "xit"
     And I should not see "iit"
     And the cursor should be before "expect"
@@ -158,7 +158,7 @@ Feature: Toggle focus
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j dt"
+    And I press "C-c C-j dt"
     Then I should see "ddescribe"
     And I should not see "xdescribe"
     And the cursor should be before "expect"
@@ -173,7 +173,7 @@ Feature: Toggle focus
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j dp"
+    And I press "C-c C-j dp"
     Then I should see "xdescribe"
     And I should not see "ddescrib"
     And the cursor should be before "expect"
@@ -187,7 +187,7 @@ Feature: Toggle focus
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j dp"
+    And I press "C-c C-j dp"
     Then I should not see "xdescribe"
     And I should not see "ddescribe"
     And I should not see "describe"
@@ -202,7 +202,7 @@ Feature: Toggle focus
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j it"
+    And I press "C-c C-j it"
     Then I should not see "it"
     And I should not see "iit"
     And I should not see "xit"
@@ -219,6 +219,6 @@ Scenario: Focus a test with intermediate function call
     });
     """
     And I go to the front of the word "expect"
-    And I press "C-c j it"
+    And I press "C-c C-j it"
     Then I should see "iit("
     And the cursor should be before "expect"

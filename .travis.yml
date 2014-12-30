@@ -16,6 +16,6 @@ before_install:
   - export PATH="/home/travis/.cask/bin:$PATH"
   - cask
 script:
-  - cask exec ecukes 2>/dev/null
+  - cask exec ecukes --reporter spec 2>/dev/null
 env:
   - EMACS=emacs24

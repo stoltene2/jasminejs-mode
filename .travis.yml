@@ -15,7 +15,7 @@ before_install:
   - curl -fsSkL https://raw.github.com/cask/cask/master/go | python
   - export PATH="/home/travis/.cask/bin:$PATH"
   - cask
-after_install:
+script:
   - cask exec ecukes
 env:
   - EMACS=emacs24

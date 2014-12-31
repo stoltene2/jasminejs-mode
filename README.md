@@ -5,18 +5,40 @@
 
 jasminejs-mode helps you manipulate and edit [Jasmine](http://jasmine.github.io/) test files.
 
+# Installation
+
+This mode is a minor mode. Usually you want to use it along side
+another mode like js2-mode or js3-mode. To use it along side js2-mode,
+simply add a hook.
+
+```elisp
+(add-hook 'js2-mode-hook (lambda () (jasminejs-mode)))
+```
+
+You can now have this mode wherever you use js2-mode.
+
 ## Keybinding
 
-All keybindings in jasminejs-mode start with `C-c C-j` and then a two-letter mnemonic shortcut. You can override `jasminejs-prefix-key` to change the prefix key.
+All keybindings in jasminejs-mode start with `C-c C-j` and then a
+two-letter mnemonic shortcut. You can customize `jasminejs-prefix-key`
+to change the prefix key.
 
-* `it` -- *I*t *T*oggle between `it` and `iit`
-* `ip` -- *I*t *P*ending between `it` and `xit`
-* `dt` -- *D*escribe *T*oggle between `describe` and `ddescribe`
-* `dp` -- *D*escribe *P*ending between `describe` and `describe`
+* `it` -- `I`t `T`oggle between `it` and `iit`
+* `ip` -- `I`t `P`ending between `it` and `xit`
+* `dt` -- `D`escribe `T`oggle between `describe` and `ddescribe`
+* `dp` -- `D`escribe `P`ending between `describe` and `xdescribe`
+
+If you would prefer not to customize `jasminejs-prefix-key` you can
+add a new prefix key yourself. Personally, I prefer `C-c j`.
+
+```elisp
+(add-hook 'jasminejs-mode-hook (lambda ()
+  (local-set-key (kbd "C-c j") 'jasminejs-prefix-map)))
+```
 
 ## Snippets
 
-Writing tests is nice when its easy. Get the characters out of the way.
+Writing tests is nice when its easy. Make it easier by typing less.
 
 Below are some snippets that can be loaded.
 

@@ -1,4 +1,4 @@
-;;; jasminejs-mode.el --- A minor mode for manipulating jasmine test files
+;;; jasminejs-mode.el --- A minor mode for manipulating jasmine test files -*- lexical-binding: t -*-
 
 ;; Copyright (C) 2014 Eric Stolten
 ;; Filename: jasminejs-mode.el
@@ -95,21 +95,24 @@ WARNING: Changing this prefix will not take effect
 dynamically.  You will need to reload to take effect."
   :type 'key-sequence)
 
-(defvar jasminejs-mode-map
-  (let ((mode-map (make-sparse-keymap))
-        (prefix-map (make-sparse-keymap)))
+(defvar jasminejs-prefix-map
+  (let ((jasminejs-prefix-map))
+    (define-prefix-command 'jasminejs-prefix-map)
+    (define-key jasminejs-prefix-map (kbd "it") 'jasminejs-toggle-focus-it)
+    (define-key jasminejs-prefix-map (kbd "ip") 'jasminejs-toggle-pending-it)
 
-    (define-key prefix-map (kbd "it") 'jasminejs-toggle-focus-it)
-    (define-key prefix-map (kbd "ip") 'jasminejs-toggle-pending-it)
+    (define-key jasminejs-prefix-map (kbd "dt") 'jasminejs-toggle-focus-describe)
+    (define-key jasminejs-prefix-map (kbd "dp") 'jasminejs-toggle-pending-describe)
 
-    (define-key prefix-map (kbd "dt") 'jasminejs-toggle-focus-describe)
-    (define-key prefix-map (kbd "dp") 'jasminejs-toggle-pending-describe)
-
-    (define-key mode-map jasminejs-prefix-key prefix-map)
-    mode-map)
+;;    (define-key prefix-map jasminejs-prefix-key prefix-map)
+    jasminejs-prefix-map)
 
   "Keymap for jasminejs mode.")
 
+(defvar jasminejs-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map jasminejs-prefix-key 'jasminejs-prefix-map)
+    map))
 
 (defun jasminejs-add-snippets-to-yas-snippet-dirs (&optional snippet-path)
   "This activates jasminejs-mode as an extra mode for yasnippet.

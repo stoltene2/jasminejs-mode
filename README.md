@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/stoltene2/jasminejs-mode.svg)](https://travis-ci.org/stoltene2/jasminejs-mode)
+[![MELPA](http://melpa.org/packages/jasminejs-mode-badge.svg)](http://melpa.org/#/jasminejs-mode)
 
 # jasminejs-mode
 

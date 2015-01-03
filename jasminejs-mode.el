@@ -84,7 +84,7 @@ example."
 (defconst jasminejs-snippet-path
   (concat (file-name-directory (if (bound-and-true-p load-file-name)
                                    load-file-name
-                                 (buffer-file-name))) "snippets")
+                                 (buffer-file-name))) "jasminejs-mode")
 
   "This is the location of the bundled jasminejs snippets.")
 

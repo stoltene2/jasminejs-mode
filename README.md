@@ -5,6 +5,10 @@
 
 jasminejs-mode helps you manipulate and edit [Jasmine](http://jasmine.github.io/) test files.
 
+# Changelog
+
+* 2015-05-26 -- Use `fdescribe` and `fit` instead of `ddescribe` and `iit`.
+
 # Installation
 
 This mode is a minor mode. Usually you want to use it along side

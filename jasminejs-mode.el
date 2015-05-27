@@ -7,7 +7,7 @@
 ;; Created: 20 Nov 2014
 ;; Keywords: javascript jasmine
 ;; Homepage: https://github.com/stoltene2/jasminejs-mode
-;; Version: 1.0
+;; Version: 2.0
 
 ;; This file is not part of GNU Emacs.
 
@@ -32,27 +32,27 @@
 
 (defun jasminejs-toggle-focus-it ()
   "Toggle the `it` function to focus.
-When you toggle a test it will toggle it between `it` and `iit`."
+When you toggle a test it will toggle it between `it` and `fit`."
   (interactive)
-  (jasminejs--toggle-previous-word "it" "i" "x"))
+  (jasminejs--toggle-previous-word "it" "f" "x"))
 
 (defun jasminejs-toggle-focus-describe ()
   "Toggle the `describe` function to focus.
-When you toggle a test it will toggle it between `describe` and `ddescribe`."
+When you toggle a test it will toggle it between `describe` and `fdescribe`."
   (interactive)
-  (jasminejs--toggle-previous-word "describe" "d" "x"))
+  (jasminejs--toggle-previous-word "describe" "f" "x"))
 
 (defun jasminejs-toggle-pending-it ()
   "Toggle the `it` function to pending.
 When you toggle a test it will toggle it between `it` and `xit`."
   (interactive)
-  (jasminejs--toggle-previous-word "it" "x" "i"))
+  (jasminejs--toggle-previous-word "it" "x" "f"))
 
 (defun jasminejs-toggle-pending-describe ()
   "Toggle the `describe` function to pending.
 When you toggle a test it will toggle it between `describe` and `xdescribe`."
   (interactive)
-  (jasminejs--toggle-previous-word "describe" "x" "d"))
+  (jasminejs--toggle-previous-word "describe" "x" "f"))
 
 (defun jasminejs--toggle-previous-word (word toggle-char &optional remove-char)
   "Toggle WORD on or off by prefixing it with TOGGLE-CHAR.

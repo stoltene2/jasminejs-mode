@@ -7,7 +7,7 @@ jasminejs-mode helps you manipulate and edit [Jasmine](http://jasmine.github.io/
 
 # Changelog
 
-* 2015-05-26 -- Use `fdescribe` and `fit` instead of `ddescribe` and `iit`.
+* 2015-05-26 -- **Breaking Change** Use `fdescribe` and `fit` instead of `ddescribe` and `iit`.
 
 # Installation
 
@@ -27,9 +27,9 @@ All keybindings in jasminejs-mode start with `C-c C-j` and then a
 two-letter mnemonic shortcut. You can customize `jasminejs-prefix-key`
 to change the prefix key.
 
-* `it` -- `I`t `T`oggle between `it` and `iit`
+* `it` -- `I`t `T`oggle between `it` and `fit`
 * `ip` -- `I`t `P`ending between `it` and `xit`
-* `dt` -- `D`escribe `T`oggle between `describe` and `ddescribe`
+* `dt` -- `D`escribe `T`oggle between `describe` and `fdescribe`
 * `dp` -- `D`escribe `P`ending between `describe` and `xdescribe`
 
 If you would prefer not to customize `jasminejs-prefix-key` you can
